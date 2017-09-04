@@ -1,0 +1,63 @@
+1. Prerequisites
+2. Usage
+3. Config file format
+4. Sample script execution
+
+----
+
+Prerequisites: 
+	- python 3.4.1
+	- prboom-plus & some wads
+	- this script
+
+
+Usage:
+	python ./script-name -i config_file -c config-tag
+
+
+Config (.ini) file format:
+	[meta-config]
+	A set of configurations used to configure the script itself.
+
+		prboom-location
+			The location to the prboom exe
+
+		iwad-location
+			The directory containing the iwad files
+
+		timestamp
+			Boolean value, defaults to false.
+
+			Suffixes all recorded demos with the current timestamp. (At the time of script execution)
+
+		<<NOT IMPLEMENTED>>
+		[makedir]
+			Boolean value, defaults to false.
+
+			If true, then a directory is made for each set of recordings, using the name of first wad found as the 
+			folder name. For example, if wad=acid.wad, then a directory called 'acid' will be made if makedir=true 
+			to contain all the demos.
+
+
+	[prboom-config]
+	This section is used for global properties that are applicable for every section. Can take any valid flags that 
+	prboom normally accepts. 
+
+	See the manual for prboom flags at http://manpages.ubuntu.com/manpages/trusty/man6/prboom-plus.6.html for details.
+
+
+	[custom config tag]
+	Each separate configuration for runtime is defined by a section with some tag, and is used to identify 
+	which section to load when running the script.
+
+	Any property from [prboom-config] redefined here overrides the original. (Eg, specifying a different skill 
+	level here overrides the one found in config.) Similar to the prboom-config section, these individual overrides 
+	can take any prboom flag.
+
+
+Sample script execution:
+	python ./prboom-macro.py -i config-example.ini -c test-interception
+
+	Produces the following command (minus the new line):
+	C:\Users\Andrew\Documents\Doom\_prboom-plus-2.5.1.3\prboom-plus.exe -iwad C:\Users\Andrew\Documents\Doom  
+	-complevel 9 -skill 4 -iwad doom2.wad -file intercep.wad skins.wad -warp 01 -record interception-01_170903_t1958
