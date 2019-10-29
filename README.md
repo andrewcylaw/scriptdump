@@ -12,3 +12,6 @@ Converts a .csv into a .tsv using an optionally given output name.
 MerchOS offers Grand Exchange flipping ideas for free. The UI is artificially limited to one batch of five "idea" items every five seconds - but the underlying network call is not rate limited.
 
 This script scrapes these requests and prints it in a nicely formatted table.
+
+## WASD-mediakeys (29 October 2019)
+Configuration for AutoHotkey that adds the same media shortcut keys as a WASD V2 keyboard.
